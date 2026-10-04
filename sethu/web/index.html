@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sethu</title>
+<style>
+  :root {
+    --bg: #faf8f4; --card: #ffffff; --ink: #1f2933; --muted: #6b7280; --line: #e5e0d8;
+    --accent: #0f766e; --accent-ink: #ffffff; --warn-bg: #fff7e0; --warn-ink: #7a5b00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14181c; --card: #1d2329; --ink: #e8ecef; --muted: #9aa5b1; --line: #2d363e;
+      --accent: #2dd4bf; --accent-ink: #06201d; --warn-bg: #2b2410; --warn-ink: #f0d98a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 16px/1.55 system-ui, -apple-system, "Segoe UI", "Noto Sans", sans-serif; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 20px 16px 120px; }
+  header h1 { margin: 0; font-size: 1.6rem; letter-spacing: .02em; }
+  header p { margin: 2px 0 14px; color: var(--muted); }
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  .controls label { display: flex; flex-direction: column; font-size: .8rem; color: var(--muted); flex: 1 1 150px; }
+  select, textarea, button { font: inherit; color: inherit; }
+  select { margin-top: 3px; padding: 9px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+  .notice { background: var(--warn-bg); color: var(--warn-ink); padding: 10px 12px; border-radius: 8px; font-size: .88rem; margin-bottom: 16px; }
+  .msg { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: 12px 0; }
+  .msg.user { background: transparent; border-style: dashed; }
+  .msg .who { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 4px; }
+  .body p { margin: .5em 0; }
+  .body ul, .body ol { margin: .4em 0; padding-left: 1.3em; }
+  .cite { color: var(--accent); font-weight: 600; text-decoration: none; cursor: pointer; }
+  .sources { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); font-size: .85rem; color: var(--muted); }
+  .sources div { margin: 3px 0; }
+  .sources a { color: var(--accent); }
+  .tools { margin-top: 8px; }
+  .tools .hint { font-size: .82rem; color: var(--warn-ink); margin-left: 6px; }
+  .tools button { font-size: .85rem; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: transparent; cursor: pointer; }
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--bg); border-top: 1px solid var(--line); padding: 10px 16px; }
+  .bar .in { max-width: 760px; margin: 0 auto; display: flex; gap: 8px; }
+  textarea { flex: 1; resize: none; padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); height: 48px; }
+  .bar button { padding: 0 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); cursor: pointer; }
+  .bar button.go { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+  .bar button.rec { background: #dc2626; color: #fff; border-color: #dc2626; }
+  button:disabled { opacity: .5; cursor: wait; }
+  .examples button { margin: 4px 6px 0 0; padding: 6px 10px; font-size: .85rem; border: 1px solid var(--line); border-radius: 999px; background: var(--card); cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Sethu <span style="font-weight:400;color:var(--muted)">· सेतु · ಸೇತು</span></h1>
+    <p>Ask about government schemes in your own language.</p>
+  </header>
+
+  <div class="controls">
+    <label>Your state
+      <select id="state">
+        <option value="">Any / not sure</option>
+        <option>Karnataka</option><option>Maharashtra</option><option>Tamil Nadu</option>
+        <option>Telangana</option><option>Andhra Pradesh</option>
+      </select>
+    </label>
+    <label>Answer language
+      <select id="lang">
+        <option value="">Same as my question</option>
+        <option value="English|en-IN">English</option>
+        <option value="Hindi|hi-IN">हिन्दी</option>
+        <option value="Kannada|kn-IN">ಕನ್ನಡ</option>
+        <option value="Telugu|te-IN">తెలుగు</option>
+        <option value="Tamil|ta-IN">தமிழ்</option>
+        <option value="Malayalam|ml-IN">മലയാളം (beta)</option>
+        <option value="Bengali|bn-IN">বাংলা (beta)</option>
+        <option value="Marathi|mr-IN">मराठी</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="notice">
+    Sethu explains what official scheme documents say. It can be out of date or wrong,
+    so always confirm details with the official portal or office before you apply.
+  </div>
+
+  <div id="log"></div>
+  <div class="examples" id="examples"></div>
+</div>
+
+<div class="bar"><div class="in">
+  <button id="mic" title="Speak your question" aria-label="Speak your question">🎤</button>
+  <textarea id="q" placeholder="Type your question…" aria-label="Your question"></textarea>
+  <button id="send" class="go">Ask</button>
+</div></div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const log = $("log"), q = $("q"), send = $("send"), mic = $("mic");
+
+const EXAMPLES = [
+  ["Free eye check-up for everyone", "Telangana"],
+  ["ರೈತರಿಗೆ ಸಬ್ಸಿಡಿ ದರದಲ್ಲಿ ಸಸಿಗಳು ಸಿಗುವ ಯೋಜನೆ ಇದೆಯೇ?", "Karnataka"],
+  ["Capital subsidy for a small factory", "Tamil Nadu"],
+  ["अनुसूचित जाति के छात्रों के लिए पीएचडी फेलोशिप", ""],
+];
+for (const [text, st] of EXAMPLES) {
+  const b = document.createElement("button");
+  b.textContent = text;
+  b.onclick = () => { q.value = text; $("state").value = st; ask(); };
+  $("examples").appendChild(b);
+}
+
+// Escape first, then add a little formatting, so answer text can never inject HTML.
+function esc(s) { return s.replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function render(text, msgId) {
+  const lines = esc(text).split("\n");
+  let html = "", list = null;
+  const close = () => { if (list) { html += `</${list}>`; list = null; } };
+  for (let line of lines) {
+    line = line.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\*(.+?)\*/g, "<i>$1</i>")
+               .replace(/\[(\d+)\]/g, `<a class="cite" href="#${msgId}-s$1">[$1]</a>`);
+    let m;
+    if ((m = line.match(/^\s*[-•*]\s+(.*)/))) { if (list !== "ul") { close(); html += "<ul>"; list = "ul"; } html += `<li>${m[1]}</li>`; }
+    else if ((m = line.match(/^\s*\d+[.)]\s+(.*)/))) { if (list !== "ol") { close(); html += "<ol>"; list = "ol"; } html += `<li>${m[1]}</li>`; }
+    else if (line.trim() === "") { close(); }
+    else { close(); html += `<p>${line}</p>`; }
+  }
+  close();
+  return html;
+}
+
+function add(who, html) {
+  const d = document.createElement("div");
+  d.className = "msg" + (who === "You" ? " user" : "");
+  d.innerHTML = `<div class="who">${who}</div><div class="body">${html}</div>`;
+  log.appendChild(d);
+  d.scrollIntoView({ behavior: "smooth", block: "end" });
+  return d;
+}
+
+async function ask() {
+  const question = q.value.trim();
+  if (!question) return;
+  const langName = ($("lang").value || "|").split("|")[0];
+  add("You", `<p>${esc(question)}</p>`);
+  q.value = ""; send.disabled = true;
+  const thinking = add("Sethu", "<p>Looking through the scheme documents…</p>");
+  try {
+    const r = await fetch("/ask", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question, state: $("state").value || null, language: langName || null }),
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.detail || "Something went wrong.");
+    const id = "m" + Date.now();
+    let html = render(data.answer, id);
+    if (data.sources.length) {
+      html += '<div class="sources"><b>Sources</b>' + data.sources.map((s) =>
+        `<div id="${id}-s${s.n}">[${s.n}] ${esc(s.scheme_name)} (${esc(s.state)}, ${esc(s.section.replace(/_/g, " "))}) · ` +
+        `<a href="${esc(s.source_url)}" target="_blank" rel="noopener">official page</a> · data from ${esc(s.fetched_on)}</div>`).join("") + "</div>";
+    }
+    html += '<div class="tools"><button data-speak>🔊 Read aloud</button> <span class="hint"></span></div>';
+    thinking.querySelector(".body").innerHTML = html;
+    const speakBtn = thinking.querySelector("[data-speak]");
+    speakBtn.onclick = () => speak(data.answer, thinking.querySelector(".hint"), speakBtn);
+  } catch (e) {
+    thinking.querySelector(".body").innerHTML = `<p>${esc(e.message)}</p>`;
+  } finally { send.disabled = false; q.focus(); }
+}
+
+// Speech is generated on the server and played as audio, so it works on any device
+// whatever voices that device has installed.
+let player = null;
+async function speak(text, hint, button) {
+  hint.textContent = "";
+  if (player) { player.pause(); player = null; button.textContent = "\u{1F50A} Read aloud"; return; }
+  button.disabled = true; button.textContent = "Loading voice\u2026";
+  try {
+    const marathi = $("lang").value.startsWith("Marathi");
+    const r = await fetch("/tts", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text, language: marathi ? "Marathi" : null }),
+    });
+    if (!r.ok) throw new Error((await r.json()).detail || "Read-aloud failed.");
+    const url = URL.createObjectURL(await r.blob());
+    const audio = new Audio(url);
+    const done = () => { player = null; button.textContent = "\u{1F50A} Read aloud"; URL.revokeObjectURL(url); };
+    audio.onended = done;
+    audio.onerror = () => { done(); hint.textContent = "Could not play the audio."; };
+    player = audio;
+    button.textContent = "\u23F9 Stop";
+    await audio.play();
+  } catch (e) {
+    player = null; button.textContent = "\u{1F50A} Read aloud"; hint.textContent = e.message;
+  } finally { button.disabled = false; }
+}
+
+// Voice input uses the browser's speech recognition; support and language coverage vary.
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (!SR) { mic.style.display = "none"; }
+else {
+  const rec = new SR();
+  rec.interimResults = false;
+  rec.onresult = (e) => { q.value = e.results[0][0].transcript; };
+  rec.onend = () => mic.classList.remove("rec");
+  rec.onerror = () => mic.classList.remove("rec");
+  mic.onclick = () => {
+    rec.lang = ($("lang").value.split("|")[1]) || "en-IN";
+    mic.classList.add("rec");
+    try { rec.start(); } catch (_) { /* already listening */ }
+  };
+}
+
+send.onclick = ask;
+q.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(); } });
+</script>
+</body>
+</html>

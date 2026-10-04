@@ -1,0 +1,52 @@
+{"q": "Is there a scholarship for children of central police force personnel for technical education?", "lang": "en", "state": null, "expect": ["pmsswwcpfp"], "kind": "describe"}
+{"q": "Fellowship for Scheduled Caste students doing M.Phil or PhD", "lang": "en", "state": null, "expect": ["ccsnfpfscsmap"], "kind": "describe"}
+{"q": "Research fellowship for PhD students in science at universities with potential for excellence", "lang": "en", "state": null, "expect": ["rfsms"], "kind": "describe"}
+{"q": "Fellowship that helps women scientists work on societal challenges", "lang": "en", "state": null, "expect": ["wise-scope-fellowship"], "kind": "describe"}
+{"q": "What is the highest sporting honour in India?", "lang": "en", "state": null, "expect": ["mdckra"], "kind": "describe"}
+{"q": "Help for coir exporters to promote exports in foreign markets", "lang": "en", "state": null, "expect": ["cvy-emps"], "kind": "describe"}
+{"q": "Institutions of Eminence scheme", "lang": "en", "state": null, "expect": ["ies"], "kind": "name"}
+{"q": "PM-DAKSH training scheme", "lang": "en", "state": null, "expect": ["pm-daksh"], "kind": "name"}
+{"q": "Financial aid for a girl child born in Karnataka", "lang": "en", "state": "Karnataka", "expect": ["bys"], "kind": "describe"}
+{"q": "Bhagyalaxmi scheme", "lang": "en", "state": "Karnataka", "expect": ["bys"], "kind": "name"}
+{"q": "Loan to start a business for religious minority communities in Karnataka", "lang": "en", "state": "Karnataka", "expect": ["dlbe"], "kind": "describe"}
+{"q": "Scheme to create 25,000 entrepreneurs through franchise models in Karnataka", "lang": "en", "state": "Karnataka", "expect": ["samruddhischeme"], "kind": "describe"}
+{"q": "Subsidised tree seedlings for farmers from the forest department", "lang": "en", "state": "Karnataka", "expect": ["kapy(1)", "kapy"], "kind": "describe"}
+{"q": "KAPY", "lang": "en", "state": "Karnataka", "expect": ["kapy(1)", "kapy"], "kind": "name"}
+{"q": "Hostel maintenance allowance for poor students in Maharashtra", "lang": "en", "state": "Maharashtra", "expect": ["drpdhma"], "kind": "describe"}
+{"q": "Scholarship to study abroad for meritorious open category students in Maharashtra", "lang": "en", "state": "Maharashtra", "expect": ["sheambgoc"], "kind": "describe"}
+{"q": "Subsidy to dig a farm pond on my land in Maharashtra", "lang": "en", "state": "Maharashtra", "expect": ["chief-minister-sustainable-agriculture-irrigation-scheme"], "kind": "describe"}
+{"q": "Magel Tyala Shettale", "lang": "en", "state": "Maharashtra", "expect": ["chief-minister-sustainable-agriculture-irrigation-scheme"], "kind": "name"}
+{"q": "Award for artisans who make utility based handicrafts in Tamil Nadu", "lang": "en", "state": "Tamil Nadu", "expect": ["ubha"], "kind": "describe"}
+{"q": "Subsidy on trademark registration or GI tag cost for MSME in Tamil Nadu", "lang": "en", "state": "Tamil Nadu", "expect": ["sacipsctmrgiia"], "kind": "describe"}
+{"q": "Capital subsidy for MSME units in Tamil Nadu", "lang": "en", "state": "Tamil Nadu", "expect": ["cs-tn"], "kind": "describe"}
+{"q": "Money for funeral expenses when a differently abled person dies in Tamil Nadu", "lang": "en", "state": "Tamil Nadu", "expect": ["fatmtfeodap"], "kind": "describe"}
+{"q": "Free eye screening for everyone in Telangana", "lang": "en", "state": "Telangana", "expect": ["kv"], "kind": "describe"}
+{"q": "Telangana Grama Jyothi", "lang": "en", "state": "Telangana", "expect": ["tgjy"], "kind": "name"}
+{"q": "Marriage assistance for poor girls from SC ST BC families in Telangana", "lang": "en", "state": "Telangana", "expect": ["klp"], "kind": "describe"}
+{"q": "Health insurance for low income families in Andhra Pradesh", "lang": "en", "state": "Andhra Pradesh", "expect": ["dysrhis"], "kind": "describe"}
+{"q": "YSR Rythu Bharosa", "lang": "en", "state": "Andhra Pradesh", "expect": ["ysrrb"], "kind": "name"}
+{"q": "Yearly investment support for farmers in Andhra Pradesh", "lang": "en", "state": "Andhra Pradesh", "expect": ["ysrrb"], "kind": "describe"}
+{"q": "Financial help for women from economically backward classes in Andhra Pradesh", "lang": "en", "state": "Andhra Pradesh", "expect": ["ysrebcn"], "kind": "describe"}
+{"q": "भारत का सबसे बड़ा खेल सम्मान कौन सा है?", "lang": "hi", "state": null, "expect": ["mdckra"], "kind": "describe"}
+{"q": "अनुसूचित जाति के छात्रों के लिए एम.फिल और पीएचडी फेलोशिप योजना क्या है?", "lang": "hi", "state": null, "expect": ["ccsnfpfscsmap"], "kind": "describe"}
+{"q": "केंद्रीय पुलिस बल कर्मियों के बच्चों के लिए छात्रवृत्ति योजना क्या है?", "lang": "hi", "state": null, "expect": ["pmsswwcpfp"], "kind": "describe"}
+{"q": "महिला वैज्ञानिकों के लिए फेलोशिप योजना कौन सी है?", "lang": "hi", "state": null, "expect": ["wise-scope-fellowship"], "kind": "describe"}
+{"q": "नारियल रेशा (कॉयर) के निर्यात को बढ़ावा देने की योजना कौन सी है?", "lang": "hi", "state": null, "expect": ["cvy-emps"], "kind": "describe"}
+{"q": "ಕರ್ನಾಟಕದಲ್ಲಿ ಹೆಣ್ಣು ಮಗು ಜನಿಸಿದರೆ ಸರ್ಕಾರದಿಂದ ಆರ್ಥಿಕ ಸಹಾಯ ಸಿಗುತ್ತದೆಯೇ?", "lang": "kn", "state": "Karnataka", "expect": ["bys"], "kind": "describe"}
+{"q": "ಧಾರ್ಮಿಕ ಅಲ್ಪಸಂಖ್ಯಾತರು ವ್ಯಾಪಾರ ಆರಂಭಿಸಲು ಸಾಲ ಪಡೆಯುವ ಯೋಜನೆ ಯಾವುದು?", "lang": "kn", "state": "Karnataka", "expect": ["dlbe"], "kind": "describe"}
+{"q": "ರೈತರಿಗೆ ಅರಣ್ಯ ಇಲಾಖೆಯಿಂದ ಸಬ್ಸಿಡಿ ದರದಲ್ಲಿ ಸಸಿಗಳು ಸಿಗುವ ಯೋಜನೆ ಇದೆಯೇ?", "lang": "kn", "state": "Karnataka", "expect": ["kapy(1)", "kapy"], "kind": "describe"}
+{"q": "சிறு தொழில் நிறுவனங்களுக்கு மூலதன மானியம் கிடைக்குமா?", "lang": "ta", "state": "Tamil Nadu", "expect": ["cs-tn"], "kind": "describe"}
+{"q": "மாற்றுத்திறனாளி இறந்தால் இறுதிச் சடங்கு செலவுக்கு அரசு உதவி கிடைக்குமா?", "lang": "ta", "state": "Tamil Nadu", "expect": ["fatmtfeodap"], "kind": "describe"}
+{"q": "கைவினைப் பொருட்கள் தயாரிக்கும் கைவினைஞர்களுக்கு விருது திட்டம் உள்ளதா?", "lang": "ta", "state": "Tamil Nadu", "expect": ["ubha"], "kind": "describe"}
+{"q": "తెలంగాణలో ఉచిత కంటి పరీక్షల పథకం ఏమిటి?", "lang": "te", "state": "Telangana", "expect": ["kv"], "kind": "describe"}
+{"q": "తెలంగాణలో పేద అమ్మాయిల పెళ్లికి ప్రభుత్వం ఆర్థిక సహాయం ఇస్తుందా?", "lang": "te", "state": "Telangana", "expect": ["klp"], "kind": "describe"}
+{"q": "ఆంధ్రప్రదేశ్‌లో రైతులకు ప్రతి సంవత్సరం పెట్టుబడి సహాయం ఇచ్చే పథకం ఏది?", "lang": "te", "state": "Andhra Pradesh", "expect": ["ysrrb"], "kind": "describe"}
+{"q": "ఆంధ్రప్రదేశ్‌లో పేద కుటుంబాలకు ఆరోగ్య బీమా పథకం ఏమిటి?", "lang": "te", "state": "Andhra Pradesh", "expect": ["dysrhis"], "kind": "describe"}
+{"q": "माझ्या शेतात शेततळे खोदण्यासाठी महाराष्ट्र सरकारकडून अनुदान मिळते का?", "lang": "mr", "state": "Maharashtra", "expect": ["chief-minister-sustainable-agriculture-irrigation-scheme"], "kind": "describe"}
+{"q": "महाराष्ट्रात उच्च शिक्षण घेणाऱ्या गरीब विद्यार्थ्यांना वसतिगृह निर्वाह भत्ता मिळतो का?", "lang": "mr", "state": "Maharashtra", "expect": ["drpdhma"], "kind": "describe"}
+{"q": "परदेशात उच्च शिक्षणासाठी खुल्या प्रवर्गातील हुशार विद्यार्थ्यांना शिष्यवृत्ती आहे का?", "lang": "mr", "state": "Maharashtra", "expect": ["sheambgoc"], "kind": "describe"}
+{"q": "What is the capital of France?", "lang": "en", "state": null, "expect": [], "kind": "out_of_scope"}
+{"q": "Give me a good biryani recipe", "lang": "en", "state": null, "expect": [], "kind": "out_of_scope"}
+{"q": "What is the price of bitcoin today?", "lang": "en", "state": null, "expect": [], "kind": "out_of_scope"}
+{"q": "ಕ್ರಿಕೆಟ್ ವಿಶ್ವಕಪ್ ಯಾರು ಗೆದ್ದರು?", "lang": "kn", "state": "Karnataka", "expect": [], "kind": "out_of_scope"}
+{"q": "आज मौसम कैसा रहेगा?", "lang": "hi", "state": null, "expect": [], "kind": "out_of_scope"}
